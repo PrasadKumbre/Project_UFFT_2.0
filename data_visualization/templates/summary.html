@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Expense Summary</title>
+        <link rel="stylesheet" href="{{ url_for('data_visualization.static', filename='summary.css') }}">
+    <style>
+ 
+    </style>
+    <script>
+        // JavaScript to update the summary based on dropdown selection
+        function updateSummary() {
+            const familyId = new URLSearchParams(window.location.search).get('family_id');
+            const timePeriod = document.getElementById('time-period').value;
+            window.location.href = `/data_visualization/fetch_family_summary?family_id=${familyId}&time_period=${timePeriod}`;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Family Expense Summary</h1>
+<br><br>
+        <!-- Dropdown to select the time period -->
+        <div class="dropdown">
+            <label for="time-period">Select Time Period:</label>
+            <select id="time-period" onchange="updateSummary()">
+                <option value="24_hours" {% if time_period=='24_hours' %}selected{% endif %}>24 Hours</option>
+                <option value="1_week" {% if time_period=='1_week' %}selected{% endif %}>1 Week</option>
+                <option value="1_month" {% if time_period=='1_month' %}selected{% endif %}>1 Month</option>
+                <option value="1_year" {% if time_period=='1_year' %}selected{% endif %}>1 Year</option>
+            </select>
+        </div>
+
+        {% if error_message %}
+        <p class="error">{{ error_message }}</p>
+        {% elif summary_data %}
+        <table>
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Category</th>
+                    <th>Total Amount</th>
+                    <th>Total User Expense</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user_name, expenses in summary_data.items() %}
+                <tr>
+                    <td rowspan="{{ expenses|length }}">{{ user_name }}</td>
+                    <td>{{ expenses[0].category_name }}</td>
+                    <td>₹{{ expenses[0].total_amount }}</td>
+                    <td rowspan="{{ expenses|length }}">₹{{ user_totals[user_name] }}</td>
+                </tr>
+                {% for expense in expenses[1:] %}
+                <tr>
+                    <td>{{ expense.category_name }}</td>
+                    <td>₹{{ expense.total_amount }}</td>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"><strong>Grand Total</strong></td>
+                    <td><strong>₹{{ total_expenses }}</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+        {% else %}
+        <p class="error">No data available for the selected time period.</p>
+        {% endif %}
+        <div style="display: flex; gap: 10px; align-items: center; margin-top:2.5%">
+            <form action="{{ url_for('user_reg.welcome') }}">
+                <input type="submit" value="Home">
+            </form>
+            <form action="{{ url_for('data_visualization.index') }}">
+                <input type="submit" value="More Details">
+            </form>
+        </div>
+
+
+</body>
+
+</html>

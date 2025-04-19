@@ -1,0 +1,359 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #C4DAD2, #16423C); 
+    color: #16423C; 
+    line-height: 1.6;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Responsive Containers */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.containers {
+    width: 100%;
+    max-width: 1200px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 5px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #C4DAD2; 
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #16423C; 
+    margin-bottom: 10px;
+}
+
+header img.logo {
+    width: 80px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    font-size: 1rem;
+    color: white;
+    background: linear-gradient(90deg, #C4DAD2, #16423C);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    border-radius: 8px;
+}
+
+.btn:hover {
+    background: #16423C;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Form Styling */
+form {
+    margin: 15px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #16423C;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid grey;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Button inside Forms */
+form button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    color: white;
+    background: #16423C;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+form button:hover {
+    background: #C4DAD2;
+    transform: scale(1.05);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Adds space between the buttons */
+    margin-top: 20px; /* Adds space from the content above */
+}
+
+/* Center tables, reduce size and ensure proper alignment */
+table {
+    width: 90%; /* Reduce width slightly to avoid stretching */
+    max-width: 1000px; /* Limit max-width for better alignment */
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Table headers and cells styling */
+table th, table td {
+    padding: 8px 12px; /* Smaller padding for compact table */
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95rem; /* Reduce font size slightly */
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 1px solid #e3eaf5;
+}
+
+/* Table headers */
+table th {
+    background: #16423C;
+    color: white;
+    font-size: 1rem;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    /*margin: 20px 0;  Add some margin for spacing */
+    margin-top: 30px; /* Adds space above the table */
+    margin-bottom: 30px;
+    
+}
+
+
+/* Checkbox and File Input */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+}
+
+.file-input {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Go Back Button */
+.go-back-btn {
+    display: block;
+    margin: 2px auto;
+    padding: 2px 5px;
+    background-color: #16423C;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+    width: 50%;
+    max-width: 200px;
+}
+
+.go-back-btn:hover {
+    background-color: #C4DAD2;
+}
+
+/* Flash Messages */
+.flash-messages {
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.alert.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+
+
+#flash-messages {
+    margin-bottom: 20px;
+}
+
+.flash-message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.flash-message.danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.flash-message.success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.flash-message.warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+}
+
+.flash-message.info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+}
+
+
+
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    table {
+        width: 95%; /* Adjust width for medium screens */
+    }
+
+    table th, table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Adjustments for tablets */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 0.9rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        padding: 8px 14px;
+        font-size: 0.9rem;
+    }
+
+    table th, table td {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
+
+    .actions {
+        gap: 10px;
+    }
+
+    .table-wrapper {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 0.7rem;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    table th, table td {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+
+    .actions {
+        gap: 5px;
+    }
+
+    .table-wrapper {
+        margin-top: 15px;
+    }
+}
+

@@ -1,0 +1,73 @@
+/* Global Styles */
+body {
+    background-color: #F5F5F5;
+    /* Faint beige close to white */
+    color: #16423C;
+    /* Dark green */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 550;
+    margin: 0;
+    padding: 0;
+    text-transform: capitalize;
+    display: grid;
+    place-items: center;
+}
+
+
+h1 {
+    color: #16423C;
+    /* Dark blue */
+    font-weight: bold;
+}
+
+.btn-info {
+    background-color: #1a8b6f;
+    /* Teal green */
+    border-color: #1a8b6f;
+    /* Teal green */
+}
+
+.btn-info:hover {
+    background-color: #146b53;
+    /* Darker teal green */
+    border-color: #146b53;
+    /* Darker teal green */
+}
+
+.btn-danger {
+    background-color: #d9534f;
+    /* Red */
+    border-color: #d9534f;
+    /* Red */
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+    /* Darker red */
+    border-color: #c9302c;
+    /* Darker red */
+}
+
+.table {
+    background-color: #ffffff;
+    /* White */
+    border: 1px solid #dddddd;
+    /* Light grey */
+    /* Rounded corners */
+}
+
+.table th {
+    background-color: #16423C;
+    /* Dark blue */
+    color: #ffffff;
+    /* White */
+}
+
+.btn-primary {
+    background-color: #16423C;
+    border-color: #16423C;
+}
+
+.btn-primary:hover {
+    background-color: #146b53;
+}

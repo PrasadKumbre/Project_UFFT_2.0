@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Savings Goals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #16423C 0%, #1a4e47 100%);
+            color: #C4DAD2;
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .container {
+            background: rgba(196, 218, 210, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(196, 218, 210, 0.2);
+            animation: fadeScale 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #C4DAD2;
+        }
+
+        .alert {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            text-align: center;
+        }
+
+        .alert-success {
+            background: rgba(72, 187, 120, 0.1);
+            border: 1px solid rgba(72, 187, 120, 0.2);
+            color: #C4DAD2;
+        }
+
+        .alert-error {
+            background: rgba(245, 101, 101, 0.1);
+            border: 1px solid rgba(245, 101, 101, 0.2);
+            color: #C4DAD2;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            color: #D8C4B6;
+        }
+
+        input, select {
+            background: rgba(196, 218, 210, 0.05);
+            border: 1px solid rgba(196, 218, 210, 0.2);
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            color: #C4DAD2;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #C4DAD2;
+            background: rgba(196, 218, 210, 0.1);
+        }
+
+        input::placeholder {
+            color: rgba(196, 218, 210, 0.5);
+        }
+
+        select option {
+            background: #16423C;
+            color: #C4DAD2;
+        }
+
+        input[type="date"] {
+            appearance: none;
+            -webkit-appearance: none;
+            background: rgba(196, 218, 210, 0.05);
+            border: 1px solid rgba(196, 218, 210, 0.2);
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1) opacity(0.7);
+        }
+
+        .description {
+            font-size: 0.8rem;
+            color: rgba(196, 218, 210, 0.7);
+            margin-top: 0.3rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #16423C 0%, #1a4e47 100%);
+            color: #C4DAD2;
+            padding: 1rem;
+            border: 1px solid rgba(196, 218, 210, 0.2);
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #1a4e47 0%, #16423C 100%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #D8C4B6;
+            font-size: 0.9rem;
+            text-align: center;
+            width: auto;
+            padding: 0.8rem 2rem;
+            border: 1px solid rgba(196, 218, 210, 0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .back-link:hover {
+            background: rgba(196, 218, 210, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .joint-goal-select {
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .joint-goal-select.visible {
+            display: block;
+        }
+
+        @keyframes fadeScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Update Savings Goals</h1>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('saving.update_goal') }}" class="form">
+            <div class="form-group">
+                <label for="update_type">Update Type</label>
+                <select id="update_type" 
+                        name="update_type" 
+                        required>
+                    <option value="user" {% if pre_fill_goal_type == 'user' %}selected{% endif %}>User Goal</option>
+                    <option value="family" {% if pre_fill_goal_type == 'family' %}selected{% endif %}>Family Goal (Admin Only)</option>
+                    <option value="joint">Joint Goal</option>
+                </select>
+            </div>
+
+            <div class="form-group joint-goal-select">
+                <label for="joint_id">Select Joint Goal</label>
+                <select id="joint_id" name="joint_id">
+                    <option value="">Loading joint goals...</option>
+                </select>
+                <p class="description">Select the joint goal you want to update</p>
+            </div>
+
+            <div class="form-group">
+                <label for="new_goal">New Goal Amount</label>
+                <input type="number" 
+                       id="new_goal" 
+                       name="new_goal" 
+                       placeholder="Enter the new goal amount" 
+                       min="0.01" 
+                       step="0.01" 
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="deadline">New Deadline</label>
+                <input type="date" 
+                       id="deadline" 
+                       name="deadline" 
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmation">Confirm Update</label>
+                <select id="confirmation" name="confirmation" required>
+                    <option value="yes">Yes, update the goal</option>
+                    <option value="no">No, cancel update</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Update Goal</button>
+        </form>
+
+        <a href="{{ url_for('saving.index') }}" class="back-link">Back to Home</a>
+    </div>
+
+    <script>
+        // Set minimum date as today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('deadline').min = today;
+
+        // Handle joint goal selection visibility and loading
+        const updateType = document.getElementById('update_type');
+        const jointGoalSelect = document.querySelector('.joint-goal-select');
+        const jointIdSelect = document.getElementById('joint_id');
+
+        updateType.addEventListener('change', function() {
+            if (this.value === 'joint') {
+                jointGoalSelect.classList.add('visible');
+                loadJointGoals();
+            } else {
+                jointGoalSelect.classList.remove('visible');
+            }
+        });
+
+        function loadJointGoals() {
+            fetch('/saving/get_user_joint_goals')  
+                .then(response => response.json())
+                .then(goals => {
+                    jointIdSelect.innerHTML = goals.length 
+                        ? goals.map(goal => 
+                            `<option value="${goal.joint_id}">Goal Amount: Rs${goal.joint_goal_amount} (Remaining: Rs${goal.joint_target_amount})</option>`
+                          ).join('')
+                        : '<option value="">No joint goals found</option>';
+                })
+                .catch(error => {
+                    console.error('Error loading joint goals:', error);
+                    jointIdSelect.innerHTML = '<option value="">Error loading joint goals</option>';
+                });
+        }
+    </script>
+</body>
+</html>

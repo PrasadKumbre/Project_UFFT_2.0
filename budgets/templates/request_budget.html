@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Request Additional Budget</title>
+     
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #C4DAD2, #16423C);
+            color: #16423C;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 40%;
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #155724;  /* Changed to a blue color */
+            margin-top: 250px;
+        }
+
+        form {
+            width: 70%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+            
+            font-family: 'Poppins', sans-serif;
+        }
+
+        select, input[type="number"], input[type="date"], textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color:#155724;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color:#155724;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input, .form-group select {
+            width: calc(100% - 10px);
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .form-group input:last-child, .form-group select:last-child {
+            margin-right: 0;
+        }
+
+        .form-group label {
+            font-size: 1.2rem;
+            margin-bottom: 7px;
+            font-weight: bold;
+            
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .form-group input, .form-group select {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+
+        #flash-messages {
+            margin-bottom: 20px;
+            position: fixed;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 50%;
+            max-width: 400px;
+        }
+        
+        .flash-message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .flash-message.danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .flash-message.success {
+            color: #155724;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .flash-message.warning {
+            color: #856404;
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+        }
+        
+        .flash-message.info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+        }
+        
+
+/* Fade Out Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div id="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                let flashMessages = document.querySelectorAll(".flash-message");
+                flashMessages.forEach(function(msg) {
+                    setTimeout(() => {
+                        msg.style.opacity = "0";
+                        setTimeout(() => msg.remove(), 500);
+                    }, 4000);  // Disappears after 4 seconds
+                });
+            });
+        </script>
+    {% endif %}
+{% endwith %}
+
+ 
+
+
+     
+    
+    <h1>Request Additional Budget</h1>
+    <form action="{{ url_for('budget.request_budget') }}"  method="post">
+       <!--<label for="user_id">Select User:</label>
+        <select name="user_id" required>
+            {% for user in users %}
+                <option value="{{ user.user_id }}">{{ user.user_name }}</option>
+            {% endfor %}
+        </select>
+       
+        <input type="hidden" name="user_id" value="{{ session.user_id }}">-->
+        <input type="hidden" name="user_id" value="{{ logged_in_user_id }}">  
+        <label for="requested_amount">Requested Amount:</label>
+        <input type="number" name="requested_amount" step="0.01" required>
+    
+        <label for="reason">Reason:</label>
+        <textarea name="reason" required></textarea>
+    
+        <button type="submit">Submit Request</button>
+    </form>
+   
+    
+    
+
+</body>
+</html>

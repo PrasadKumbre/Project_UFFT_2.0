@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Montserrat", serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(to right, #16423C , #C4DAD2);
+}
+
+.container{
+    width: 600px;
+    background: transparent;
+    border: 2px solid rgba(62, 88, 121,.2);
+    backdrop-filter: blur(9px);
+    color:rgb(62, 88, 121);
+    border-radius: 13px;
+    padding: 30px 40px;
+    align-items: center;
+}
+
+h1{
+    text-align:center;
+    font-size: 33px;
+    font-weight: 600;
+    padding-bottom:26px;
+    letter-spacing: 0.5;
+    color:#16423C;
+}
+
+ul{
+    text-align:center;
+    font-size: 21px;
+    font-weight: 600;
+    padding-bottom:26px;
+    letter-spacing: 0.5;
+    color:#16423C;
+    appearance: none;
+}
+li{
+    text-align:center;
+    font-size: 21px;
+    font-weight: 540;
+    padding-bottom:16px;
+    letter-spacing: 0.5;
+    color:#16423C;
+}
+
+.sl {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.google-btn{
+    width:48%;
+    height: 45px;
+    background: #16423C;
+    border: 2px solid rgba(216, 196, 182, .2);
+    border-radius: 40px;
+    box-shadow: 0 0 10px  rgba(0, 0, 0, .2);
+    cursor: pointer;
+    font-size: 16px;
+    color:  #C4DAD2;
+    font-weight: 500;
+    line-height: 1;
+    transition:all .4s ease-in-out;
+    padding-left: 0;
+}
+
+.google-btn:hover{
+    transform: scale(1.05);
+}
+
+input{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 40px;
+    font-size: 20px;
+    color:#EFE3C2;
+    padding: 20px,45px,20px,20px;
+    padding-left:20px;
+    outline: none; 
+}
+
+input:focus{
+    border-color: #16423C;
+}
+
+select:focus{
+    border-color: #16423C;
+}
+
+.options{
+    font-size: 22px;
+}
+
+input::placeholder{
+    color:#D8C4B6;
+    font-size: 18px;
+}
+
+p {
+    text-align: center;
+    margin-top: 15px;
+    color:#D8C4B6;
+}
+
+p a {
+    color: #D8C4B6;
+    font-weight: 500;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+select{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 40px;
+    font-size: 24px;
+    color:#D8C4B6;
+    padding: 20px,45px,20px,20px;
+    padding-left:20px;
+}
+
+.mem{
+    font-size: 24px;
+    color:#D8C4B6;
+}
+
+legend{
+    font-size: 24px;
+    color:#D8C4B6;
+}
+
+
+input[type="date"]::placeholder {
+    color: transparent;
+}
+
+input[type="date"] {
+    font-size: 20px;
+    color: #D8C4B6;
+}
+
+#requirements {
+    position: absolute;
+    background: #fff8e7;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    z-index: 10;
+}
+
+#requirements.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+#requirements p {
+    margin: 5px 0; 
+    text-align: left; 
+    color:#C4DAD2;
+}
+
+.mess{
+    font-size: 26px;
+    text-align:center;
+    font-weight: 550;
+    padding-bottom:26px;
+    letter-spacing: 0.5;
+    color:#16423C;
+  }
+
+
