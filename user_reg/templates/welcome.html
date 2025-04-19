@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famora Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            background-color: #fff8e7; 
+           
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            left: -200px;
+            width: 600px;
+            height: 600px;
+            background: rgba(196, 218, 210, 0.8); 
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            bottom: -150px;
+            right: -200px;
+            width: 400px;
+            height: 400px;
+            background: rgba(196, 218, 210, 0.8); 
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .welcome-msg {
+            font-size: 24px;
+            font-weight: bold;
+            color: #16423C; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background-color: #16423C;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover{
+            transform: scale(1.05);
+        }
+
+        .account-btn {
+            padding: 10px 20px;
+            background-color: white;
+            color: #16423C; 
+            border: 1px solid #16423C;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .account-btn:hover{
+            transform: scale(1.05);
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #16423C; 
+            margin-bottom: 30px;
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+            max-width: 1000px;
+        }
+
+        .feature-box {
+            background-color: white;
+           
+            color: #16423C;
+  padding: 2rem;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  height: 160px;
+  width: 200px;
+        }
+
+        .feature-box:hover{
+            transform: scale(1.05);
+            
+            background-image: linear-gradient(to right, white , #C4DAD2);
+        }
+
+       .feature-link{
+        text-decoration: none;
+        color: #16423C;
+        font-size: 15px;
+       }
+
+        .summary-btn {
+            padding: 10px 20px;
+            background-color: white; 
+            color: #16423C;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            height:90px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            font-size: 20px;
+            grid-column: 8 / -1; 
+  justify-self: center;
+  text-align: center;
+            
+        }
+
+        .summary-btn:hover{
+            transform: scale(1.05);
+            
+            background-image: linear-gradient(to right, white , #C4DAD2);
+        }
+
+        .img-container {
+  width: 75px;
+  height: 75px;
+  margin: 0 auto 1rem;
+  border-radius: 40%;
+  overflow: hidden;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+a{
+    text-decoration: none;
+    color:#16423C;
+    font-size: 18px;
+}
+.logo{
+    color:white;
+}
+
+h3{
+    font-size: 20px;
+    margin-top: 3rem;
+}
+
+
+@media only screen and (max-width: 480px) {
+
+    body {
+            font-family: Arial, sans-serif;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            background-color: #fff8e7; 
+           
+        }
+
+    
+    body::before {
+            content: "";
+            position: absolute;
+            top: -90px;
+            left: -200px;
+            width: 350px;
+            height: 350px;
+            background: rgba(196, 218, 210, 0.8); 
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 270px;
+            height: 270px;
+            right: -70px;
+            bottom:-350px;
+            background: rgba(196, 218, 210, 0.8); 
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+.welcome-msg {
+    font-size: 20px;
+   
+   
+}
+
+.header-buttons {
+    font-size: 9px;
+   
+    gap: 1rem;
+   
+    display: flex;
+}
+
+.account-btn,.logout-btn{
+    width: 100px;
+    text-align: center;
+}
+
+.feature-box {
+    padding: 1.5rem;
+    height: 130px;
+    width: 160px;
+}
+
+.summary-btn {
+    font-size: 18px;
+   
+}
+.features-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.logo{
+    font-size: 34px;
+    text-align: center;
+
+   
+}
+.main-content{
+    margin-top: 2.5rem;
+}
+}
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="welcome-msg">Welcome, {{ login_name }}!</div>
+        <div class="header-buttons">
+            <form action="{{ url_for('user_reg.MyAccount') }}">
+                <input type="submit" value="My Account" class="account-btn">
+            </form>
+            <form  action="{{url_for('user_reg.logout')}}">
+                <input type="submit" value="Log Out" class="logout-btn">
+            </form>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <div class="logo" style="color:#16423C">FAMORA</div>
+        <div class="features-container">
+
+            <div class="feature-box">
+                <a href="{{ url_for('budget.home') }}">
+                    <div class="img-container">
+                        <img src="static/budget-calculator.png">
+                    </div>
+                    <h3>Budget</h3>
+                </a>
+            </div>
+
+    <div class="feature-box">
+        <a href="{{ url_for('expense.index') }}"><div class="img-container">
+            <img src="static/expense.png">
+        </div>
+        <h3>Expense</h3>
+       </a>
+    </div>
+
+    <div class="feature-box">
+        <a href="{{ url_for('saving.index') }}"><div class="img-container">
+            <img src="static/piggy-bank.png">
+        </div>
+        <h3 style="font-size: 20px">Saving</h3>
+       </a></div>
+    
+    <div class="feature-box">
+        <a href="{{ url_for('data_visualization.index') }}"><div class="img-container">
+            <img src="static/pie-graph.png">
+        </div>
+        <h3>Visualization</h3>
+       </a>
+    </div>
+   
+</div>
+
+{% if role == 'hof' %}
+    <form action="{{ url_for('data_visualization.fetch_family_summary')}}"  method="GET">
+        <input type="hidden" name="family_id" value="{{ family_id }}">
+        <input type="submit" value="Summary of members" class="summary-btn">
+    </form> 
+    {% endif %}
+
+</body>
+</html>

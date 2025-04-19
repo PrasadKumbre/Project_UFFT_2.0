@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otp-password</title>
+    <link rel="stylesheet" href="/user_reg/static/first.css">
+
+    <style>
+        .error{
+    color: #960019;
+  font-size: 18px;
+  margin-bottom: 8px;
+  }
+
+  .mess{
+    font-size: 26px;
+    text-align:center;
+    font-weight: 550;
+    padding-bottom:26px;
+    letter-spacing: 0.5;
+    color:#16423C;
+  }
+  
+    </style>
+</head>
+<body>
+    <div class="container">
+    <p class="mess">We have sent an OTP to your email. <br>Please enter it to reset your password</p>
+    {% if error %}
+    <p class="error">{{error}}</p>
+    {% endif %}
+    <form action="{{ url_for('user_reg.forgot_password') }}" method="POST">
+        <input type="text" name="passOTP" placeholder="Enter OTP">  <br><br><br><br><br>
+
+        <div class="sl">
+            <input type="submit" class="google-btn" value="Continue">
+        </div>
+    </form></div>
+</body>
+</html>
