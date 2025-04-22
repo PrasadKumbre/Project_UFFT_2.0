@@ -7,7 +7,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import mysql.connector
 from db_connection import get_connection
 from flask_mail import Mail, Message
-
+from decimal import Decimal
 
 # # Database configuration
 # DB_HOST = "localhost"
@@ -572,9 +572,9 @@ def report():
         # Prepare category report data
         for budget in budgets:
             category_id = budget['category_id']
-            total_expenses = expenses_dict.get(category_id, 0)
-            remaining = float(budget['budget_amount']) - total_expenses
-
+            total_expenses = Decimal(expenses_dict.get(category_id, 0))
+            remaining = budget['budget_amount'] - total_expenses
+            
             report_data.append({
                 'name': budget['name'],
                 'budget_amount': budget['budget_amount'],
@@ -622,8 +622,8 @@ def report():
         # Prepare user report data
         for budget in budgets:
             user_id = budget['user_id']
-            total_expenses = expenses_dict.get(user_id, 0)
-            remaining = float(budget['budget_amount']) - total_expenses
+            total_expenses = Decimal(expenses_dict.get(user_id, 0))
+            remaining = budget['budget_amount'] - total_expenses
 
             report_data.append({
                 'name': budget['name'],

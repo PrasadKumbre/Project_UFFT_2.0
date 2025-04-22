@@ -13,6 +13,7 @@ def create_app():
 
     app = Flask(__name__)
     app.secret_key = 'ProjectUFFT' 
+
     
     app.config['SESSION_COOKIE_NAME'] = 'ProjectUFFT_Session'
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -44,5 +45,5 @@ def create_app():
 if __name__ == "__main__":
     app = create_app()
     app.run(debug=True,port=8000)
-
-app = create_app()
+    
+app=create_app()

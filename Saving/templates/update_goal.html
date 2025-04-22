@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Update Savings Goals</title>
+    <title>FAMORA |Update Savings Goals</title>
+    <!-- Inside <head> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -203,6 +206,94 @@
     </style>
 </head>
 <body>
+        <!-- Fixed Top Nav Bar -->
+        <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #fdf8ef; z-index: 1000;">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="{{ url_for('user_reg.welcome') }}"
+                    style="color: #003d29; font-weight: 700;">FAMORA</a>
+        
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#famoraNavbar"
+                    aria-controls="famoraNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="famoraNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+                        <!-- Budget Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{{ url_for('budget.home') }}" id="budgetDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                style="color: #007f4e; font-weight: 500;">Budget</a>
+                            <ul class="dropdown-menu" aria-labelledby="budgetDropdown">
+                                <li><a class="dropdown-item" href="{{ url_for('budget.home') }}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('budget.home') }}">View Budget</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('budget.add_budget') }}">Add Budget</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('budget.report') }}">View Report</a></li>
+                            </ul>
+                        </li>
+        
+                        <!-- Expense -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('expense.index') }}"
+                                style="color: #007f4e; font-weight: 500;">Expense</a>
+                        </li>
+        
+                        <!-- Saving Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="savingDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false"
+                                style="color: #007f4e; font-weight: 500;">Saving</a>
+                            <ul class="dropdown-menu" aria-labelledby="savingDropdown">
+                                <li><a class="dropdown-item" href="{{ url_for('saving.index') }}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('saving.create_goal') }}">Create Goal</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('saving.create_joint_goal') }}">Create Joint
+                                        Goal</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('saving.contribute') }}">Contribute</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('saving.investments') }}">Investment</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('saving.display_goals') }}">View Goal</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('saving.update_goal') }}">Update Goal</a></li>
+                            </ul>
+                        </li>
+        
+                        <!-- Visualization Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="visualizationDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false"
+                                style="color: #007f4e; font-weight: 500;">Visualization</a>
+                            <ul class="dropdown-menu" aria-labelledby="visualizationDropdown">
+                                <li><a class="dropdown-item" href="{{ url_for('data_visualization.index') }}">Expense
+                                        Report</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('data_visualization.show_history') }}">Show
+                                        History</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+        
+                    <div class="d-flex" style="gap: 10px;">
+                        <a href="{{ url_for('user_reg.MyAccount') }}" class="btn btn-outline-success"
+                            style="border-color: #007f4e; background: transparent; color: #007f4e;">My Account</a>
+                        <a href="{{ url_for('user_reg.logout') }}" class="btn btn-success"
+                            style="background-color: #007f4e; border-color: #007f4e;">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Dropdown hover effect for large screens -->
+            <style>
+                @media (min-width: 992px) {
+                    .navbar-nav .dropdown:hover .dropdown-menu {
+                        display: block;
+                        margin-top: 0;
+                    }
+                }
+            </style>
+        </nav>
+        <br>
+        <br>
+        <br>
+        <br>
+
     <div class="container">
         <h1>Update Savings Goals</h1>
         
@@ -302,5 +393,8 @@
                 });
         }
     </script>
+        <!-- Before closing </body> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

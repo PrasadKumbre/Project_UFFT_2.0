@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Goals</title>
+    <title>FAMORA | View Goals</title>
+    <!-- Inside <head> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -111,7 +114,7 @@
             padding-right: 2.5rem;
         }
 
-        .btn {
+        .btnm {
             background: linear-gradient(135deg, #16423C 0%, #1a4e47 100%);
             color: #C4DAD2;
             padding: 1rem 2rem;
@@ -127,7 +130,7 @@
             display: block;
         }
 
-        .btn:hover {
+        .btnm:hover {
             background: linear-gradient(135deg, #1a4e47 0%, #16423C 100%);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
@@ -171,7 +174,7 @@
             border-bottom: none;
         }
 
-        .delete-btn {
+        .delete-btnm {
             background: none;
             border: none;
             cursor: pointer;
@@ -182,7 +185,7 @@
             border-radius: 50%;
         }
 
-        .delete-btn:hover {
+        .delete-btnm:hover {
             background: rgba(216, 196, 182, 0.1);
             transform: scale(1.1);
         }
@@ -226,7 +229,7 @@
             letter-spacing: 1px;
         }
 
-        #deleteModal .btn {
+        #deleteModal .btnm {
             margin: 0.5rem;
             display: inline-block;
         }
@@ -248,6 +251,94 @@
     </style>
 </head>
 <body>
+    <!-- Fixed Top Nav Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #fdf8ef; z-index: 1000;">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="{{ url_for('user_reg.welcome') }}"
+                style="color: #003d29; font-weight: 700;">FAMORA</a>
+    
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#famoraNavbar"
+                aria-controls="famoraNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="famoraNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    
+                    <!-- Budget Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{ url_for('budget.home') }}" id="budgetDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            style="color: #007f4e; font-weight: 500;">Budget</a>
+                        <ul class="dropdown-menu" aria-labelledby="budgetDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('budget.home') }}">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('budget.home') }}">View Budget</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('budget.add_budget') }}">Add Budget</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('budget.report') }}">View Report</a></li>
+                        </ul>
+                    </li>
+    
+                    <!-- Expense -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('expense.index') }}"
+                            style="color: #007f4e; font-weight: 500;">Expense</a>
+                    </li>
+    
+                    <!-- Saving Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="savingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            style="color: #007f4e; font-weight: 500;">Saving</a>
+                        <ul class="dropdown-menu" aria-labelledby="savingDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('saving.index') }}">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('saving.create_goal') }}">Create Goal</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('saving.create_joint_goal') }}">Create Joint
+                                    Goal</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('saving.contribute') }}">Contribute</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('saving.investments') }}">Investment</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('saving.display_goals') }}">View Goal</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('saving.update_goal') }}">Update Goal</a></li>
+                        </ul>
+                    </li>
+    
+                    <!-- Visualization Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="visualizationDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            style="color: #007f4e; font-weight: 500;">Visualization</a>
+                        <ul class="dropdown-menu" aria-labelledby="visualizationDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('data_visualization.index') }}">Expense
+                                    Report</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('data_visualization.show_history') }}">Show
+                                    History</a></li>
+                        </ul>
+                    </li>
+                </ul>
+    
+                <div class="d-flex" style="gap: 10px;">
+                    <a href="{{ url_for('user_reg.MyAccount') }}" class="btn btn-outline-success"
+                        style="border-color: #007f4e; background: transparent; color: #007f4e;">My Account</a>
+                    <a href="{{ url_for('user_reg.logout') }}" class="btn btn-success"
+                        style="background-color: #007f4e; border-color: #007f4e;">Log Out</a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Dropdown hover effect for large screens -->
+        <style>
+            @media (min-width: 992px) {
+                .navbar-nav .dropdown:hover .dropdown-menu {
+                    display: block;
+                    margin-top: 0;
+                }
+            }
+        </style>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+
     <div class="container">
         <h1>View Family Savings Goals</h1>
         {% with messages = get_flashed_messages() %}
@@ -267,7 +358,7 @@
                     <option value="joint_goal" {% if selected_goal_type == 'joint_goal' %}selected{% endif %}>Joint Goal</option>
                 </select>
             </div>
-            <button type="submit" class="btn">View Goals</button>
+            <button type="submit" class="btnm">View Goals</button>
         </form>
 
         {% if selected_goal_type == 'user_goal' and goals %}
@@ -291,7 +382,7 @@
                     <td>{{ goal.deadline }}</td>
                     <td>
                         <form method="POST" action="{{ url_for('saving.delete_goal', goal_type='user', goal_id=goal.user_id) }}" style="display:inline;">
-                            <button type="submit" class="delete-btn">🗑️</button>
+                            <button type="submit" class="delete-btnm">🗑️</button>
                         </form>
                     </td>
                 </tr>
@@ -323,7 +414,7 @@
                     <td>
 
                         <form method="POST" action="{{ url_for('saving.delete_goal', goal_type='family', goal_id=user_id) }}" style="display:inline;">
-                            <button type="submit" class="delete-btn">🗑️</button>
+                            <button type="submit" class="delete-btnm">🗑️</button>
                         </form>
                     </td>
                     {%endif%}
@@ -353,7 +444,7 @@
                     <td>{{ goal.joint_target_amount }}</td>
                     <td>{{ goal.deadline }}</td>
                     <td>
-                        <button type="button" onclick="showModal({{ goal.joint_id }}, {{ user_id }})" class="delete-btn">
+                        <button type="button" onclick="showModal({{ goal.joint_id }}, {{ user_id }})" class="delete-btnm">
                             🗑️
                         </button>
                     </td>
@@ -368,10 +459,10 @@
             <p>What action would you like to take?</p>
             <form method="POST" id="deleteForm">
                 <input type="hidden" name="user_id" id="modalUserId">
-                <button type="submit" name="action" value="withdraw" class="btn">Withdraw Contribution</button>
-                <button type="submit" name="action" value="leave" class="btn">Leave Contribution</button>
+                <button type="submit" name="action" value="withdraw" class="btnm">Withdraw Contribution</button>
+                <button type="submit" name="action" value="leave" class="btnm">Leave Contribution</button>
             </form>
-            <button onclick="hideModal()" class="btn">Cancel</button>
+            <button onclick="hideModal()" class="btnm">Cancel</button>
         </div>
 
         <a href="{{ url_for('saving.index') }}" class="back-link">Back to Home</a>
@@ -388,5 +479,8 @@
             document.getElementById('deleteModal').style.display = 'none';
         }
     </script>
+        <!-- Before closing </body> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

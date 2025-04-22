@@ -4,8 +4,8 @@
 }
 
 body {
-    background-color: #F5F5F5; /* Faint beige close to white */
-    color: #16423C; /* Dark green */
+    background-color: #F5F5F5;
+    color: #16423C;
     display: grid;
     place-items: center;
     margin: 0;
@@ -14,10 +14,11 @@ body {
 }
 
 #main-container {
-    width: 1000px;
+    width: 90%;
+    max-width: 1000px;
     align-items: center;
-    background: rgba(255, 255, 255, 0.8); /* Lightened background */
-    padding: 30px; /* Increased padding */
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
@@ -25,8 +26,8 @@ body {
 header {
     width: 100%;
     height: 75px;
-    background: #16423C; /* Solid dark green header */
-    color: #C4DAD2; /* Light green */
+    background: #16423C;
+    color: #C4DAD2;
     font-style: oblique;
     font-size: 1.5rem;
     text-align: center;
@@ -45,8 +46,8 @@ header {
 }
 
 button {
-    background: #C4DAD2; /* Light green */
-    color: #16421be9; /* Dark green for text */
+    background: #C4DAD2;
+    color: #16421be9;
     cursor: pointer;
     padding: 10px 18px;
     min-width: 90px;
@@ -59,32 +60,36 @@ button {
 }
 
 button:hover {
-    background: #A8C8BF; /* Slightly darker light green on hover */
+    background: #A8C8BF;
     transform: scale(1.05);
-    backdrop-filter: blur(5px); /* Add glassy blur effect on hover */
+    backdrop-filter: blur(5px);
 }
 
 .feature_buttons {
     margin: 20px auto;
     display: flex;
     justify-content: space-evenly;
-    width: 65%;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 90%;
     padding: 20px;
-    background: #C4DAD2; /* Light green */
+    background: #C4DAD2;
     border-radius: 20px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-#add_expense, #edit_expense, #sorting_filtering, #new_rec_form, #recc_exps,#edit_menu,#add_amount_form,#interval-selection,#rec_exp_conf_div {
+#add_expense, #edit_expense, #sorting_filtering, #new_rec_form, #recc_exps,
+#edit_menu, #add_amount_form, #interval-selection, #rec_exp_conf_div {
     padding: 50px;
     margin-top: 10px;
     border-radius: 15px;
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Semi-transparent border */
-    background: rgba(255, 255, 255, 0.1); /* Lightened background */
-    backdrop-filter: blur(10px); /* Glassy blur effect */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    color: #032a42; /* Dark green text */
-    width: 550px;
+    color: #032a42;
+    width: 90%;
+    max-width: 550px;
     margin: 0 auto;
     display: none;
     position: fixed;
@@ -101,6 +106,7 @@ button:hover {
         top: 100%;
         opacity: 0;
     }
+
     to {
         top: 50%;
         transform: translateX(-50%) translateY(-50%);
@@ -112,10 +118,11 @@ table {
     border-collapse: collapse;
     margin: 20px auto;
     width: 100%;
-    border: #D8C4B6 solid 2px; /* Light cream border */
-    color: #16423C; /* Dark green */
+    overflow-x: auto;
+    border: #D8C4B6 solid 2px;
+    color: #16423C;
     border-radius: 10px;
-    background-color: #FFFFFF; /* White background for tables */
+    background-color: #FFFFFF;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -123,69 +130,89 @@ table th,
 table td {
     text-align: center;
     padding: 15px 20px;
-    border: 2px solid #C4DAD2; /* Light green border */
+    border: 2px solid #C4DAD2;
 }
 
 table th {
-    background-color: #C4DAD2; /* Light green for header */
-    color: #16423C; /* Dark green text */
+    background-color: #C4DAD2;
+    color: #16423C;
     font-weight: bold;
 }
 
 table td {
-    background-color: #FFFFFF; /* White for table rows */
+    background-color: #FFFFFF;
 }
 
 table td:hover {
-    background-color: #f0f8ff; /* Very light blue on hover */
-    backdrop-filter: blur(5px); /* Add blur effect on hover */
+    background-color: #f0f8ff;
+    backdrop-filter: blur(5px);
 }
 
 table tr:nth-child(even) {
-    background-color: #F9F9F9; /* Light grey for even rows */
+    background-color: #F9F9F9;
 }
 
 table tr:nth-child(odd) {
-    background-color: #FFFFFF; /* White for odd rows */
+    background-color: #FFFFFF;
 }
 
 .delete_btn {
-    background-color: #C4DAD2; /* Light green */
-    color: #16423C; /* Dark green */
+    background-color: #C4DAD2;
+    color: #16423C;
     font-size: 1rem;
     padding: 5px;
     transition: background-color 0.3s ease;
 }
 
 .delete_btn:hover {
-    background-color: #A8C8BF; /* Slightly darker light green */
+    background-color: #A8C8BF;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
 i:hover {
-    color: #FF0000; /* Red for icons */
+    color: #FF0000;
 }
-#deleteMessage{
-    color:red;
+
+#deleteMessage {
+    color: red;
 }
-#undoSuccess,#new_exp{
-    color:rgb(180, 168, 4);
+
+#undoSuccess, #new_exp {
+    color: rgb(180, 168, 4);
+    position: fixed;
+    top: 15%;
+    right: 20px;
+    background-color: #333;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #16423C;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: bounceInRight 3s ease-out forwards;
 }
- 
+
 @keyframes bounceInRight {
     0% {
         transform: translateX(100%);
         opacity: 0;
     }
+
     60% {
         transform: translateX(-10px);
         opacity: 1;
     }
+
     80% {
         transform: translateX(5px);
     }
+
     100% {
         transform: translateX(0);
     }
@@ -196,28 +223,11 @@ i:hover {
         transform: translateX(0);
         opacity: 1;
     }
+
     100% {
         transform: translateX(100%);
         opacity: 0;
     }
-}
-
- #undoSuccess ,#new_exp{
-    position: fixed;
-    top: 15%;
-    right: 20px;
-    background-color: #333;
-    font-size: 0.9rem;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: 1px solid #16423C;
-    opacity: 0;
-    width: 320px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    animation: bounceInRight 3s ease-out forwards;
 }
 
 .message.fade-out {
@@ -231,12 +241,13 @@ i:hover {
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    width: 300px;
-    height: 400px;
+    width: 90%;
+    max-width: 350px;
+    height: auto;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px); /* Glassy effect */
+    backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     z-index: 1000;
     padding: 20px;
@@ -246,9 +257,10 @@ i:hover {
 .flashcards {
     display: none;
     text-align: center;
-    margin: 10px;
+    width: 90%;
+    margin: 10px auto;
     padding: 20px;
-    border: 1px solid #D8C4B6; /* Light cream */
+    border: 1px solid #D8C4B6;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -261,13 +273,13 @@ i:hover {
     font-size: 24px;
     cursor: pointer;
     margin: 0 10px;
-    color: #1A4E47; /* Darker green */
+    color: #1A4E47;
     transition: color 0.3s ease;
 }
 
 .arrows i.disabled {
     cursor: not-allowed;
-    color: #ccc; /* Light grey */
+    color: #ccc;
 }
 
 #deleteConfirmationSection {
@@ -276,13 +288,14 @@ i:hover {
     display: none;
     margin: 20px auto;
     padding: 20px;
-    background-color: #f9f8f1; /* Softer beige */
+    background-color: #f9f8f1;
 }
 
 @keyframes right_slide {
     from {
         right: -100%;
     }
+
     to {
         right: 0.5%;
         transform: translateY(-100%) translateX(-10%);
@@ -301,8 +314,9 @@ i:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-width: 250px;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     opacity: 0;
     animation: bounceInRight 5s ease-out forwards;
 }
@@ -316,3 +330,41 @@ i:hover {
     cursor: pointer;
 }
 
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+    header {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    table th, table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 1rem;
+    }
+
+    #undoSuccess, #new_exp {
+        width: 90%;
+        font-size: 0.8rem;
+        right: 5%;
+    }
+
+    .summary-info {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .arrows i {
+        font-size: 20px;
+    }
+}

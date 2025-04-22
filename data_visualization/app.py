@@ -14,6 +14,7 @@ from collections import defaultdict
 
 app = Flask(__name__)
 
+
 data_visualization_bp = Blueprint('data_visualization', __name__, template_folder='templates', static_folder='static')
 
 

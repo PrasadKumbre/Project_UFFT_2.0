@@ -12,9 +12,10 @@ from email.mime.multipart import MIMEMultipart
 from datetime import datetime, timedelta
 from db_connection import get_connection,create_session
 
-
 app = Flask(__name__)
 app.secret_key = 'ProjectUFFT'
+
+
 
 #con = mysql.connector.connect(host='localhost', user='root', password='roshni04', database='ProjectUFFT',connection_timeout=600)
 con=get_connection()
@@ -325,7 +326,9 @@ def role():
         elif role=='Member':
             return redirect(url_for('user_reg.member'))
         else:
-            return redirect(url_for('user_reg.signin'))
+            return redirect(url_for('user_reg.signin', success=True))
+
+
 
 
 
@@ -343,7 +346,9 @@ def hof():
          con.commit()
          cur.execute("update users set family_id=%s where user_name=%s",(hof_code,user_name))
          con.commit()
-    return redirect(url_for('user_reg.signin'))
+    return redirect(url_for('user_reg.signin', success=True))
+
+
     
 @user_reg_bp.route("/member",methods=['GET','POST'])
 def member():
@@ -358,7 +363,9 @@ def member():
         else:
             cur.execute("update users set family_id=%s where user_name=%s",(mem_code,user_name))
             con.commit()
-    return redirect(url_for('user_reg.signin'))
+    return redirect(url_for('user_reg.signin', success=True))
+
+
 
 
 
