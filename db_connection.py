@@ -7,10 +7,10 @@ def get_connection():
     """Creates and returns a new database connection."""
     try:
         connection = mysql.connector.connect(
-            host='sql12.freesqldatabase.com',          # Replace with your database host
-            user='sql12774113',          # Replace with your database username
-            password='Vl6G3Mdisr',  # Replace with your database password
-            database='sql12774113'   # Replace with your database name
+            host='database-1.cixeyo8sefb4.us-east-1.rds.amazonaws.com',          # Replace with your database host
+            user='admin',          # Replace with your database username
+            password='0~+r1T-M<763',  # Replace with your database password
+            database='famora'   # Replace with your database name
         )
         # connection = mysql.connector.connect(
         #     host='localhost',          # Replace with your database host
