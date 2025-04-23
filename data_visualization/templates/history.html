@@ -131,11 +131,11 @@
                     <td>
                         <!-- Show Button -->
                         <a href="{{ url_for('data_visualization.show_report', report_id=report.report_id) }}"
-                            class="btn btn-success btn-sm mx-1" style="color: white;">Show</a>
+                            class="btn btn-success btn-sm mx-1" style="color: white; margin-top:2%;">Show</a>
 
                         <!-- Delete Button with Confirmation -->
                         <button class="btn btn-danger btn-sm mx-1"
-                            onclick="confirmDelete('{{ report.report_id }}')">Delete</button>
+                            onclick="confirmDelete('{{ report.report_id }}')" style="margin-top:2%;">Delete</button>
                     </td>
                 </tr>
                 {% endfor %}

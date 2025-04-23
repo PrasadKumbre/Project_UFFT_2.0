@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
     --primary-color: #2B5741;
     --secondary-color: #F5F5F5;
@@ -13,22 +14,22 @@
 }
 
 body {
-    font-family:"Roboto", serif;
+    font-family: "Roboto", serif;
     line-height: 1.6;
     color: var(--text-color);
 }
 
-h3{
+h3 {
     font-size: 40px;
     margin-bottom: 3rem;
-  
+
 
 }
 
-.card p{
+.card p {
     font-size: 30px;
     display: inline-block;
-    text-wrap:wrap;
+    text-wrap: wrap;
 }
 
 
@@ -53,41 +54,42 @@ h3{
 }
 
 .Register-btn {
-    color:  white;
+    color: white;
     padding: 0.5rem 1rem;
-    border: solid ;
+    border: solid;
     height: 50px;
-    width:120px;
+    width: 120px;
     background: #16423C;
     border: 2px solid rgba(216, 196, 182, .2);
     border-radius: 40px;
-    box-shadow: 0 0 10px  rgba(0, 0, 0, .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     cursor: pointer;
 }
+
 .login-btn {
     color: #16423C;
     padding: 0.5rem 1rem;
-    border: solid ;
+    border: solid;
     height: 50px;
-    width:120px;
+    width: 120px;
     background: #C4DAD2;
     border: 2px solid rgba(216, 196, 182, .2);
     border-radius: 40px;
-    box-shadow: 0 0 10px  rgba(0, 0, 0, .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     cursor: pointer;
     border-color: #16423C;
 }
 
-.Register-btn:hover{
+.Register-btn:hover {
     transform: scale(1.05);
 }
 
-.login-btn:hover{
+.login-btn:hover {
     transform: scale(1.05);
 }
 
 .hero {
-    background-image: linear-gradient(to right, #16423C , #C4DAD2);
+    background-image: linear-gradient(to right, #16423C, #C4DAD2);
     color: var(--white);
     padding: 12rem 2rem;
     position: relative;
@@ -104,9 +106,10 @@ h3{
     font-family: "Roboto", serif;
     font-optical-sizing: auto;
     font-weight: <weight>;
-    font-style: normal;}
+    font-style: normal;
+}
 
-.hero p{
+.hero p {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
     line-height: 1.2;
@@ -143,16 +146,16 @@ h3{
 
 .main-section {
     margin-top: 4rem;
-    
+
     width: 100%;
 }
 
 .main-cards {
     display: grid;
-   
+
     gap: 4rem;
     margin-top: 2rem;
-    
+
     width: 100%;
     display: block;
 }
@@ -164,16 +167,16 @@ h3{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 2rem;
     margin-bottom: 5rem;
-   height: 35rem;
-   
-    
+    height: 35rem;
+
+
 }
 
 
-.card:hover{
+.card:hover {
     transform: translateY(-18px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
 }
 
 .card .icon {
@@ -192,7 +195,7 @@ h3{
 }
 
 
-img{
+img {
     float: right;
     width: 30%;
     height: 70%;
@@ -204,33 +207,33 @@ img{
 @media only screen and (max-width:480px) {
     .planning-cards {
         display: grid;
-       
+
         gap: 2rem;
         margin-bottom: 1rem;
-        
+
         width: 100%;
         display: block;
     }
 
     .card {
         padding: 2rem;
-       height: 25rem;
-       
-        
+        height: 25rem;
+
+
     }
 
-    h3{
+    h3 {
         font-size: 19px;
         margin-bottom: 1rem;
-      
-    
+
+
     }
-    
-    .card p{
+
+    .card p {
         font-size: 10px;
     }
 
-    img{
+    img {
         width: 20%;
         height: 40%;
         margin-right: -15px;
@@ -238,34 +241,118 @@ img{
         text-wrap: wrap;
     }
 
-    .Register-btn {
-        width:60px;
-        padding: 0.1rem 0.1rem;
-        font-size: 9px;
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 1rem;
     }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .Register {
+        flex-direction: row;
+        gap: 0.4rem;
+    }
+
+    .Register form {
+        display: inline-block;
+    }
+
+    .Register-btn,
     .login-btn {
-        width:60px;
-        padding: 0.1rem 0.1rem;
-        font-size: 9px;
+        font-size: 10px;
+        padding: 0.3rem 0.6rem;
+        width: auto;
+        min-width: 60px;
+        height: auto;
+        border-radius: 20px;
+        white-space: nowrap;
     }
 
     .hero {
         padding: 17rem 2rem;
         height: 640px;
     }
-    
-    
+
+
     .hero h1 {
         font-size: 3.8rem;
-        margin-bottom: 1rem;}
-    
-    .hero p{
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
         font-size: 1.2rem;
         margin-bottom: 0.5rem;
     }
-    
-    
+
+
 }
- 
 
 
+
+/* Add this below your existing @media query or make a new one if needed */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .Register {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .hero {
+        text-align: center;
+        padding: 8rem 1rem;
+        height: auto;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero p {
+        font-size: 1.4rem;
+    }
+
+    .main-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .card {
+        height: auto;
+        padding: 1.5rem;
+    }
+
+    img {
+        float: none;
+        display: block;
+        margin: 1rem auto;
+        width: 80%;
+        height: auto;
+        top: unset;
+        position: static;
+    }
+
+    h3 {
+        text-align: center;
+    }
+}
+
+/* Optional: Make font sizes scale for all screens */
+body {
+    font-size: clamp(14px, 2vw, 18px);
+}
+
+.card p {
+    font-size: clamp(14px, 1.5vw, 20px);
+}

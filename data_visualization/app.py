@@ -65,10 +65,13 @@ def index():
                     # HOF can select all family members
                     cursor.execute("SELECT user_id, name FROM users WHERE family_id = %s", (family_id,))
                     family_members = cursor.fetchall()
+                    cursor.close()
+                    connection.close()
                 else:
                     # Non-HOF users only see their own name
                     cursor.execute("SELECT user_id, name FROM users WHERE user_id = %s", (u_id,))
                     family_members = cursor.fetchall()
+                    connection.close()
 
     if request.method == 'POST':
         Expense_data.clear()
@@ -117,6 +120,8 @@ def index():
                     cursor.execute(query, params)
                     expense_data = cursor.fetchall()
                     Expense_data.append(expense_data)
+                    cursor.close()
+                    connection.close()
                     
             # Group expenses by user_id for multiple pie charts
             grouped_expenses = {}
@@ -246,6 +251,8 @@ def save_report():
                     VALUES (%s, %s, %s)
                 """, (user_id, report_data, datetime.now()))
                 connection.commit()
+                cursor.close()
+                connection.close()
     except Exception as e:
         print(f"Error saving report: {e}")
         return "Failed to save report.", 500
@@ -479,6 +486,8 @@ def fetch_family_summary():
         with connection.cursor(dictionary=True) as cursor:
             cursor.execute(query, (family_id,))
             raw_data = cursor.fetchall()
+            cursor.close()
+            connection.close()
 
     # Group data by user name
     summary_data = {}

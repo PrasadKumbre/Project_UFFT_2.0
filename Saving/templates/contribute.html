@@ -8,203 +8,268 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #16423C 0%, #1a4e47 100%);
-            color: #C4DAD2;
-            min-height: 100vh;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #16423C 0%, #1a4e47 100%);
+    color: #C4DAD2;
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
 
-        .container {
-            background: rgba(196, 218, 210, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(196, 218, 210, 0.2);
-            animation: fadeScale 0.8s ease-out;
-        }
+.container {
+    background: rgba(196, 218, 210, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(196, 218, 210, 0.2);
+    animation: fadeScale 0.8s ease-out;
+}
 
-        h1 {
-            font-size: 2rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #C4DAD2;
-        }
+h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #C4DAD2;
+}
 
-        .flash-message {
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-        }
+.flash-message {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
 
-        .flash-success {
-            background: rgba(72, 187, 120, 0.1);
-            border: 1px solid rgba(72, 187, 120, 0.2);
-            color: #C4DAD2;
-        }
+.flash-success {
+    background: rgba(72, 187, 120, 0.1);
+    border: 1px solid rgba(72, 187, 120, 0.2);
+    color: #C4DAD2;
+}
 
-        .flash-error {
-            background: rgba(245, 101, 101, 0.1);
-            border: 1px solid rgba(245, 101, 101, 0.2);
-            color: #C4DAD2;
-        }
+.flash-error {
+    background: rgba(245, 101, 101, 0.1);
+    border: 1px solid rgba(245, 101, 101, 0.2);
+    color: #C4DAD2;
+}
 
-        .form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
-        label {
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            color: #D8C4B6;
-        }
+label {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    color: #D8C4B6;
+}
 
-        input,
-        select {
-            background: rgba(196, 218, 210, 0.05);
-            border: 1px solid rgba(196, 218, 210, 0.2);
-            border-radius: 10px;
-            padding: 0.8rem 1rem;
-            color: #C4DAD2;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
+input,
+select {
+    background: rgba(196, 218, 210, 0.05);
+    border: 1px solid rgba(196, 218, 210, 0.2);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    color: #C4DAD2;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
 
-        input:focus,
-        select:focus {
-            outline: none;
-            border-color: #C4DAD2;
-            background: rgba(196, 218, 210, 0.1);
-        }
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #C4DAD2;
+    background: rgba(196, 218, 210, 0.1);
+}
 
-        select option {
-            background: #16423C;
-            color: #C4DAD2;
-        }
+select option {
+    background: #16423C;
+    color: #C4DAD2;
+}
 
-        .info-text {
-            font-size: 0.8rem;
-            color: #D8C4B6;
-            margin-top: 0.3rem;
-        }
+.info-text {
+    font-size: 0.8rem;
+    color: #D8C4B6;
+    margin-top: 0.3rem;
+}
 
-        .btn {
-            background: linear-gradient(135deg, #16423C 0%, #1a4e47 100%);
-            color: #C4DAD2;
-            padding: 1rem;
-            border: 1px solid rgba(196, 218, 210, 0.2);
-            border-radius: 25px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-        }
+.btn {
+    background: linear-gradient(135deg, #16423C 0%, #1a4e47 100%);
+    color: #C4DAD2;
+    padding: 1rem;
+    border: 1px solid rgba(196, 218, 210, 0.2);
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
 
-        .btn:hover {
-            background: linear-gradient(135deg, #1a4e47 0%, #16423C 100%);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
+.btn:hover {
+    background: linear-gradient(135deg, #1a4e47 0%, #16423C 100%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
 
-        .chart-container {
-            background: rgba(196, 218, 210, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            width: 100%;
-            max-width: 600px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(196, 218, 210, 0.2);
-            display: none;
-            animation: fadeScale 0.8s ease-out;
-        }
+.chart-container {
+    background: rgba(196, 218, 210, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(196, 218, 210, 0.2);
+    display: none;
+    animation: fadeScale 0.8s ease-out;
+}
 
-        .contribution-stats {
-            margin-top: 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
+.contribution-stats {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
 
-        .stat-item {
-            background: rgba(196, 218, 210, 0.05);
-            padding: 1rem;
-            border-radius: 10px;
-            border: 1px solid rgba(196, 218, 210, 0.1);
-        }
+.stat-item {
+    background: rgba(196, 218, 210, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(196, 218, 210, 0.1);
+}
 
-        .back-link {
-            display: inline-block;
-            margin-top: 1.5rem;
-            text-decoration: none;
-            color: #D8C4B6;
-            font-size: 0.9rem;
-            text-align: center;
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid rgba(196, 218, 210, 0.2);
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
+.back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    text-decoration: none;
+    color: #D8C4B6;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(196, 218, 210, 0.2);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
 
-        .back-link:hover {
-            background: rgba(196, 218, 210, 0.1);
-            transform: translateY(-2px);
-        }
+.back-link:hover {
+    background: rgba(196, 218, 210, 0.1);
+    transform: translateY(-2px);
+}
 
-        @keyframes fadeScale {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
+@keyframes fadeScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
 
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+    body {
+        padding: 1.5rem;
+    }
 
-            .container,
-            .chart-container {
-                padding: 1.5rem;
-            }
+    .container {
+        padding: 2rem;
+        max-width: 450px;
+    }
 
-            h1 {
-                font-size: 1.8rem;
-            }
+    .chart-container {
+        padding: 1.5rem;
+        max-width: 550px;
+    }
 
-            .contribution-stats {
-                grid-template-columns: 1fr;
-            }
-        }
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .contribution-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1.5rem;
+    }
+
+    .container,
+    .chart-container {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .contribution-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1.2rem;
+    }
+
+    .container,
+    .chart-container {
+        padding: 1.2rem;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
+
+    .contribution-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .flash-message {
+        padding: 1rem;
+    }
+
+    .stat-item {
+        padding: 1rem;
+    }
+}
+
     </style>
 </head>
 

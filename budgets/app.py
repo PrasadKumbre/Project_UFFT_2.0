@@ -200,7 +200,7 @@ def home():
         WHERE budgets.family_id = %s
     ''', (family_id,))
     user_budgets = cursor.fetchall()
-
+    cursor.close()
     connection.close()
 
     return render_template('home2.html', 
@@ -244,6 +244,7 @@ def add_budget():
     user = cursor.fetchone()
     if not user:
         flash('User not found in the database.', 'error')
+        cursor.close()
         connection.close()
         return redirect(url_for('user_reg.signin'))
 
@@ -377,6 +378,7 @@ def edit_budget(id):
         cursor.execute('SELECT * FROM users')
         dropdown = cursor.fetchall()
 
+    cursor.close()
     connection.close()
     return render_template('edit_budget.html', budget=budget, dropdown=dropdown, budget_type=budget_type)
 
@@ -475,6 +477,7 @@ def expenses():
                 send_category_threshold_alert_email(user_email, category_name, category_total_expenses, category_threshold, category_budget_amount)
 
         flash('Expense added successfully!', 'success')
+        cursor.close()
         connection.close()
         return redirect('/budget/expenses')
 
@@ -500,6 +503,7 @@ def expenses():
     user_budget = cursor.fetchone()
     user_budget = user_budget['amount'] if user_budget else 0
 
+    cursor.close()
     connection.close()
 
     return render_template('expenses.html', categories=categories, user_budget=user_budget, total_expenses=total_expenses)
@@ -526,6 +530,7 @@ def report():
     # Fetch user details (role and family_id)
     cursor.execute('SELECT role, family_id FROM users WHERE user_name = %s', (logged_in_user_name,))
     user = cursor.fetchone()
+    
 
     if not user:
         flash("User not found!", "error")
@@ -565,6 +570,8 @@ def report():
                 category_id
         ''', (family_id,))
         expenses = cursor.fetchall()
+        cursor.close()
+        connection.close()
 
         # Map expenses to categories
         expenses_dict = {expense['category_id']: expense['total_expenses'] for expense in expenses}
@@ -615,6 +622,8 @@ def report():
                 user_id
         ''', (family_id,))
         expenses = cursor.fetchall()
+        cursor.close()
+        connection.close()
 
         # Map expenses to users
         expenses_dict = {expense['user_id']: expense['total_expenses'] for expense in expenses}
@@ -741,6 +750,7 @@ def approve_reject(user_id, action):
 
     if not user:
         flash('User not found!', 'danger')
+        cursor.close()
         connection.close()
         return redirect('/budget')
 
@@ -756,6 +766,8 @@ def approve_reject(user_id, action):
             WHERE user_id = %s
         ''', (requested_amount, user_id))
         connection.commit()
+        cursor.close()
+        connection.close()
 
         # Send an acceptance email
         subject = "Budget Request Accepted"
@@ -813,6 +825,7 @@ def delete_budget(id, budget_type):
         connection.rollback()
        # flash("Error deleting budget: " , "error")
     finally:
+        cursor.close()
         connection.close()
 
     return redirect(url_for('budget.home'))  # Redirect back to home page

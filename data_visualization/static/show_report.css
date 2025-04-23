@@ -71,3 +71,38 @@ h1 {
 .btn-primary:hover {
     background-color: #146b53;
 }
+
+@media only screen and (max-width: 480px) {
+    body {
+        display: block;
+        /* Override the grid layout */
+        padding: 0.5rem;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .table th,
+    .table td {
+        white-space: nowrap;
+        font-size: 13px;
+    }
+
+    .btn-primary,
+    .btn-info,
+    .btn-danger {
+        font-size: 13px;
+        padding: 0.4rem 0.8rem;
+        width: auto;
+        min-width: 90px;
+        margin: 0.2rem;
+    }
+}
