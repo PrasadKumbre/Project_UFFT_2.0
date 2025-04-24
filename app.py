@@ -31,8 +31,10 @@ def create_app():
     @app.route('/')
     def home():
             return render_template('home1.html')
-       
-
+    @app.route('/ping')
+    def ping():
+        return "pong", 200   
+   
     app.register_blueprint(expense_bp, url_prefix='/expense')
     app.register_blueprint(user_reg_bp, url_prefix='/user_reg')
     app.register_blueprint(saving_bp, url_prefix='/saving')
