@@ -7,9 +7,9 @@ def get_connection():
     """Creates and returns a new database connection."""
     try:
         connection = mysql.connector.connect(
-            host='database-1.cixeyo8sefb4.us-east-1.rds.amazonaws.com',          # Replace with your database host
-            user='admin',          # Replace with your database username
-            password='0~+r1T-M<763',  # Replace with your database password
+            host='gateway01.ap-southeast-1.prod.aws.tidbcloud.com',          # Replace with your database host
+            user='26mFNufLFED9HJX.root',# Replace with your database username
+            password='psMdlliUEeVY6T81',  # Replace with your database password
             database='famora'   # Replace with your database name
         )
         # connection = mysql.connector.connect(
